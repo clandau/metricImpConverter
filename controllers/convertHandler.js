@@ -42,7 +42,7 @@ function ConvertHandler() {
     let unitRegex = /[a-zA-Z]+/g
     let result = input.match(unitRegex).pop()
     if (resultArray.indexOf(result.toLowerCase()) === -1) {
-      console.log('invalid unit')
+      console.log('invalid unit here')
       return undefined
     } 
     console.log(`unit result : ${result}`)

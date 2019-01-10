@@ -119,7 +119,7 @@ function ConvertHandler() {
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-    return `${initNum.toFixed(5)} ${this.spellOutUnit(initUnit)} converts to ${returnNum.toFixed(5)} ${this.spellOutUnit(returnUnit)}`
+    return `${+initNum.toFixed(5)} ${this.spellOutUnit(initUnit)} converts to ${+returnNum.toFixed(5)} ${this.spellOutUnit(returnUnit)}`
   };
   
 }

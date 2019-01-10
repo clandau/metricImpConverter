@@ -58,14 +58,14 @@ suite('Unit Tests', function(){
     test('For Each Valid Unit Inputs', function(done) {
       let input = ['gal','l','mi','km','lbs','kg','GAL','L','MI','KM','LBS','KG']
       input.forEach(function(ele) {
-        assert.equal(convertHandler.getUnit(ele), ele.toLowerCase())
+        assert.equal(convertHandler.getUnit(ele), ele)
       })
       done()
     })
     
     test('Unknown Unit Input', function(done) {
       let input = 'zzs'
-      assert.equal(convertHandler.getUnit(), undefined)
+      assert.equal(convertHandler.getUnit(input), undefined)
       done()
     })
     

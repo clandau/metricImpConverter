@@ -14,26 +14,17 @@ function ConvertHandler() {
     let result = input.split(regex)[0]
     if(result === '') return 1
     result = result.split('/')
-    console.log(`result after split : ${result}`)
-    if(result.length > 1) {
-      for(let i=0; i<result.length; i++) {
-        if(parseFloat(result[i])!= result[i]) {
-          console.log(`invalid number ${result[i]}`)
-          return undefined
-        }
-      }
-      result = parseFloat(result[0]) / parseFloat(result[1])
-    }
-    else {
-      console.log(`${parseFloat(result) == result[0]}`)
-      if(parseFloat(result) != result[0]) {
-        console.log(`invalid number`)
+    if(result.length > 2) return undefined
+    for(let i=0; i<result.length; i++) {
+      if(parseFloat(result[i])!= result[i]) {
+        console.log(`invalid number ${result[i]}`)
         return undefined
       }
-      result = parseFloat(result)
     }
-    console.log(`regex result number : ${result} type : ${typeof(result)}`)
-    return result
+    if(result.length > 1) {
+      return parseFloat(result[0]) / parseFloat(result[1])
+    }
+    else return parseFloat(result)
   }
   
   this.getUnit = function(input) {
@@ -42,10 +33,9 @@ function ConvertHandler() {
     let unitRegex = /[a-zA-Z]+/g
     let result = input.match(unitRegex).pop()
     if (resultArray.indexOf(result.toLowerCase()) === -1) {
-      console.log('invalid unit here')
+      console.log('invalid unit')
       return undefined
     } 
-    console.log(`unit result : ${result}`)
     return result
   }
   
@@ -72,7 +62,6 @@ function ConvertHandler() {
         result = 'mi'
         break
     }
-    console.log(`return unit : ${result}`)
     return result;
   };
 

@@ -6,14 +6,14 @@
 *
 */
 
-'use strict';
+'use strict'
 
-const expect = require('chai').expect;
-const ConvertHandler = require('../controllers/convertHandler.js');
+const expect = require('chai').expect
+const ConvertHandler = require('../controllers/convertHandler.js')
 
 module.exports = function (app) {
   
-  let convertHandler = new ConvertHandler();
+  let convertHandler = new ConvertHandler()
 
   app.route('/api/convert')
     .get(function (req, res){
@@ -31,9 +31,7 @@ module.exports = function (app) {
         let returnNum = convertHandler.convert(initNum, initUnit);
         let returnUnit = convertHandler.getReturnUnit(initUnit);
         let toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
-        res.json({ initNum : initNum, initUnit : initUnit, returnNum : returnNum, returnUnit : returnUnit, string : toString })
-
+        res.json({ initNum : initNum.toFixed(5), initUnit : initUnit, returnNum : returnNum.toFixed(5), returnUnit : returnUnit, string : toString })
       }
-    });
-    
-};
+    })  
+}

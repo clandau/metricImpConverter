@@ -21,11 +21,20 @@ module.exports = function (app) {
       let input = req.query.input;
       let initNum = convertHandler.getNum(input);
       let initUnit = convertHandler.getUnit(input);
-      let returnNum = convertHandler.convert(initNum, initUnit);
-      let returnUnit = convertHandler.getReturnUnit(initUnit);
-      let toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
       
-      //res.json
+      if(initNum === undefined) {
+        (initUnit === undefined) ? res.send('invalid number and unit') : res.send('invalid number')
+      }
+      else if(initUnit === undefined) {
+        return 'invalid unit'
+      }
+      else {
+        let returnNum = convertHandler.convert(initNum, initUnit);
+        let returnUnit = convertHandler.getReturnUnit(initUnit);
+        let toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
+        res.json({ initNum : initNum, initUnit : initUnit, returnNum : returnNum, returnUnit : returnUnit, string : toString })
+
+      }
     });
     
 };
